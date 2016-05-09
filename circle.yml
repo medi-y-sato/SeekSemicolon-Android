@@ -15,11 +15,13 @@ dependencies:
 test:
   pre:
     - emulator -avd circleci-android22 -no-audio -no-window:
-        background: false
-        parallel: false
+        background: true
+        parallel: true
     - circle-android wait-for-boot
   override:
       - ./gradlew build connectedDebugAndroidTest
+  post:
+    - $ANDROID_HOME/platform-tools/adb -s emulator-5554 emu kill
 deployment:
   production:
     branch: master
