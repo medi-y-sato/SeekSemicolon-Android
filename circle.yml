@@ -3,6 +3,15 @@ machine:
         version: openjdk7
     environment:
         JAVA_OPTS: "-Xmx2048m -XX:MaxPermSize=1024m"
+dependencies:
+  pre:
+    - git submodule init && git submodule update
+    - echo "sdk.dir="$ANDROID_HOME > local.properties
+    - echo "storePassword="$storePassword > local.properties
+    - echo "keyAlias="$keyAlias > local.properties
+    - echo "keyPassword="$keyPassword > local.properties
+    - echo "apiSecret="$apiSecret > app/fabric.properties
+    - echo "apiKey="$apiKey > app/fabric.properties
 test:
   pre:
     - emulator -avd circleci-android22 -no-audio -no-window:
