@@ -1,0 +1,22 @@
+machine:
+    java:
+        version: openjdk7
+    environment:
+        JAVA_OPTS: "-Xmx2048m -XX:MaxPermSize=1024m"
+test:
+  pre:
+    - emulator -avd circleci-android22 -no-audio -no-window:
+        background: true
+        parallel: true
+    - circle-android wait-for-boot
+  override:
+      - ./gradlew build connectedDebugAndroidTest
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./gradlew assemble crashlyticsUploadDistributionRelease
+  staging:
+    branch: /release_.*/
+    commands:
+      - ./gradlew assembleDebug crashlyticsUploadDistributionDebug
