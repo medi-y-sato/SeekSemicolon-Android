@@ -3,5 +3,4 @@
 
 です。
 
-[![Build Status](https://travis-ci.org/medi-y-sato/SeekSemicolon.svg?branch=master)](https://travis-ci.org/medi-y-sato/SeekSemicolon)
-
+[![Circle CI](https://circleci.com/gh/medi-y-sato/SeekSemicolon-Android/tree/master.svg?style=svg)](https://circleci.com/gh/medi-y-sato/SeekSemicolon-Android/tree/master)
