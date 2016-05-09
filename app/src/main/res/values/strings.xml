@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">コロンをさがせ</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="game_title">: コロンをさがせ :</string>
+    <string name="title_start">スタート</string>
+    <string name="gamescore">Score : </string>
+    <string name="gameseekcolon">[%1$s] のなかから [%2$s] を探して下さい</string>
+    <string name="resultgameover">間違い....</string>
+    <string name="resulttimeover">タイムアップー....</string>
+    <string name="resultscore">Score : </string>
+    <string name="resultback2title">タイトルに戻る</string>
+    <string name="gameTimeString">残り時間 : %2.3f</string>
+
+</resources>

@@ -1,0 +1,65 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    signingConfigs {
+        config {
+            storeFile file('ysato.jks')
+            storePassword properties.getProperty("storePassword", System.getenv("storePassword"))
+            keyAlias properties.getProperty("keyAlias", System.getenv("keyAlias"))
+            keyPassword properties.getProperty("keyPassword", System.getenv("keyPassword"))
+        }
+    }
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+    defaultConfig {
+        applicationId 'jp.mediba.seeksemicolon'
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName '1.0'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [fabric_api_key:properties.getProperty("fabric_api_key", System.getenv("fabric_api_key"))]
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+        }
+    }
+    productFlavors {
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    androidTestCompile 'com.android.support.test:runner:0.3'
+    androidTestCompile 'com.android.support.test:rules:0.3'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true;
+    }
+}
