@@ -35,8 +35,5 @@ captures/
 # Intellij
 *.iml
 
-# Keystore files
-*.jks
-
 .idea/
 app/fabric.properties
