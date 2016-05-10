@@ -26,7 +26,7 @@ test:
     - $ANDROID_HOME/platform-tools/adb -s emulator-5554 emu kill
 deployment:
   production:
-    branch: [ master , /release.*/ ]
+    branch: master
     commands:
       - ./gradlew assemble
       - ./deploy_hockeyapp.sh
