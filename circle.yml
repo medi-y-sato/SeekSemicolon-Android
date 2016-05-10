@@ -29,6 +29,6 @@ deployment:
     commands:
       - ./gradlew assemble crashlyticsUploadDistributionRelease
   staging:
-    branch: /release_.*/
+    branch: /release.*/
     commands:
       - ./gradlew assembleDebug crashlyticsUploadDistributionDebug
