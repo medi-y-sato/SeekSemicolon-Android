@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
+        jcenter()
     }
 
     dependencies {
@@ -39,12 +40,17 @@ android {
         applicationId 'jp.mediba.seeksemicolon'
         minSdkVersion 14
         targetSdkVersion 23
+
         versionCode 1
         versionName '1.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [fabric_api_key:properties.getProperty("fabric_api_key", System.getenv("fabric_api_key"))]
+        manifestPlaceholders = [
+                fabric_api_key:properties.getProperty("fabric_api_key", System.getenv("fabric_api_key")),
+                HOCKEYAPP_APP_ID: properties.getProperty("HOCKEYAPP_APP_ID", System.getenv("HOCKEYAPP_APP_ID"))
+        ]
         ext.betaDistributionNotifications=false
         ext.betaDistributionReleaseNotes=getCurrentCommitMessage()
+
     }
     buildTypes {
         debug {
@@ -74,4 +80,6 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true;
     }
+    compile 'net.hockeyapp.android:HockeySDK:4.0.0'
+
 }

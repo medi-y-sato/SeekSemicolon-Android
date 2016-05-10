@@ -11,6 +11,7 @@ dependencies:
     - echo "keyAlias="$keyAlias >> local.properties
     - echo "keyPassword="$keyPassword >> local.properties
     - echo "fabric_api_key="$fabric_api_key >> local.properties
+    - echo "HOCKEYAPP_APP_ID="$HOCKEYAPP_APP_ID >> local.properties
     - echo "apiSecret="$apiSecret > app/fabric.properties
     - echo "apiKey="$apiKey >> app/fabric.properties
 test:
@@ -27,7 +28,8 @@ deployment:
   production:
     branch: master
     commands:
-      - ./gradlew assemble crashlyticsUploadDistributionRelease
+      - ./gradlew assemble
+      - ./deploy_hockeyapp.sh
   staging:
     branch: /release.*/
     commands:
