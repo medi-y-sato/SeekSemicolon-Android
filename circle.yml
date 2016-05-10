@@ -7,12 +7,12 @@ dependencies:
   pre:
     - git submodule init && git submodule update
     - echo "sdk.dir="$ANDROID_HOME > local.properties
-    - echo "storePassword="$storePassword > local.properties
-    - echo "keyAlias="$keyAlias > local.properties
-    - echo "keyPassword="$keyPassword > local.properties
-    - echo "fabric_api_key="$fabric_api_key > local.properties
+    - echo "storePassword="$storePassword >> local.properties
+    - echo "keyAlias="$keyAlias >> local.properties
+    - echo "keyPassword="$keyPassword >> local.properties
+    - echo "fabric_api_key="$fabric_api_key >> local.properties
     - echo "apiSecret="$apiSecret > app/fabric.properties
-    - echo "apiKey="$apiKey > app/fabric.properties
+    - echo "apiKey="$apiKey >> app/fabric.properties
     - cat app/fabric.properties
     - cat local.properties
 test:
