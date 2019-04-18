@@ -5,14 +5,14 @@ buildscript {
     }
 
     dependencies {
-        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'io.fabric.tools:gradle:1.28.1'
     }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
-def getCurrentCommitMessage() {
+static def getCurrentCommitMessage() {
     def gitlog = 'git log origin/develop...HEAD --decorate'.execute().text
     if (gitlog.trim().length()>0) return gitlog
     return 'git log -n 1 --decorate'.execute().text
@@ -34,12 +34,12 @@ android {
             keyPassword properties.getProperty("keyPassword", System.getenv("keyPassword"))
         }
     }
-    compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'jp.mediba.seeksemicolon'
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 28
 
         versionCode 1
         versionName '1.0'
@@ -73,10 +73,10 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.1.1+'
-    androidTestCompile 'com.android.support.test:runner:0.3+'
-    androidTestCompile 'com.android.support.test:rules:0.3+'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2+'
+    compile 'com.android.support:appcompat-v7:28.0.0'
+    androidTestCompile 'com.android.support.test:runner:1.0.2'
+    androidTestCompile 'com.android.support.test:rules:1.0.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true;
     }
